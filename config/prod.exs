@@ -62,4 +62,15 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-import_config "prod.secret.exs"
+
+# 本当は良くない
+config :dankai, Dankai.Endpoint,
+  secret_key_base: System.get_env("SECRET_KEY_BASE") || "I4VHD1r1EeSk5l4v5ZR2VfuvyCfoaSnQ44hJD+WpdxTgUNnoSiAthyKR6AmKn/6l"
+
+# Configure your database
+config :dankai, Dankai.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: System.get_env("DB_USER_NAME") || "phoenix",
+  password: System.get_env("DB_USER_PASS") || "phoenix",
+  database: "yoshinoya_cookpad",
+  pool_size: 20

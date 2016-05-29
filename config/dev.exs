@@ -35,8 +35,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :dankai, Dankai.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "dankai_dev",
+  username: "phoenix",
+  password: "phoenix",
+  database: "yoshinoya_cookpad",
   hostname: "localhost",
   pool_size: 10

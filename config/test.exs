@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :dankai, Dankai.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "dankai_test",
+  username: "phoenix",
+  password: "phoenix",
+  database: "yoshinoya_cookpad_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
