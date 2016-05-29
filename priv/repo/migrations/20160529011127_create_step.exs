@@ -3,8 +3,8 @@ defmodule Dankai.Repo.Migrations.CreateStep do
 
   def change do
     create table(:steps) do
-      add :recipe_id, :integer, size: 4
-      add :description, :string, size: 65535
+      add :recipe_id, :integer # MySQL向けだと必要かも , [size: 4]
+      add :description, :string, [size: 65535]
 
       timestamps
     end

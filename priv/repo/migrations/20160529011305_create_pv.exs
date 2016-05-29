@@ -3,8 +3,8 @@ defmodule Dankai.Repo.Migrations.CreatePv do
 
   def change do
     create table(:pvs) do
-      add :controller, :string, size: 255
-      add :action, :string, size: 255
+      add :controller, :string, [size: 255]
+      add :action, :string, [size: 255]
 
       timestamps
     end

@@ -2,8 +2,10 @@ defmodule Dankai.Step do
   use Dankai.Web, :model
 
   schema "steps" do
-    field :recipe_id, :integer
+#    field :recipe_id, :integer
     field :description, :string
+
+    belongs_to :recipe, Dankai.Recipe
 
     timestamps
   end

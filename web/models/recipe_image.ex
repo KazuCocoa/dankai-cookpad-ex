@@ -2,9 +2,11 @@ defmodule Dankai.RecipeImage do
   use Dankai.Web, :model
 
   schema "recipe_images" do
-    field :recipe_id, :integer
+#    field :recipe_id, :integer
     field :path, :string
     field :digest, :string
+
+    belongs_to :recipe, Dankai.Recipe
 
     timestamps
   end
