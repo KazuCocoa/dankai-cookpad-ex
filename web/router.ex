@@ -31,6 +31,8 @@ defmodule Dankai.Router do
 
     get "/", PageController, :index
 
+    get "/initialize", PageController, :initialize
+
     resources "/recipe_images", RecipeImageController, only: [:show, :create]
     resources "/steps", StepController, only: [:create]
 
