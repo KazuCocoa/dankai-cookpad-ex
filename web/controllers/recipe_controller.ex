@@ -2,11 +2,13 @@ defmodule Dankai.RecipeController do
   use Dankai.Web, :controller
 
   alias Dankai.Recipe
+  alias Dankai.Pv
 
   plug :scrub_params, "recipe" when action in [:create, :update]
+  plug :record_pv, "index" when action in [:index]
 
   def index(conn, _params) do
-    recipes = Repo.all(Recipe)
+    recipes = Repo.all(Recipe) |> Repo.preload(:steps)
     render(conn, "index.html", recipes: recipes)
   end
 
@@ -63,5 +65,12 @@ defmodule Dankai.RecipeController do
     conn
     |> put_flash(:info, "Recipe deleted successfully.")
     |> redirect(to: recipe_path(conn, :index))
+  end
+
+  def record_pv(conn, param) do
+    %Pv{}
+    |> Pv.changeset(%{controller: "#{__MODULE__}", action: param})
+    |> Repo.insert!
+    conn
   end
 end

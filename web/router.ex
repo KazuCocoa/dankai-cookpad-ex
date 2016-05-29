@@ -29,7 +29,7 @@ defmodule Dankai.Router do
   scope "/", Dankai do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", RecipeController, :index
 
     get "/initialize", PageController, :initialize
 
