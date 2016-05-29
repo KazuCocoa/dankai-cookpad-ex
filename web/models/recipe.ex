@@ -30,9 +30,11 @@ defmodule Dankai.Recipe do
   end
 
   def viewed!(id) do
-    Repo.transaction(fn ->
-      resipe = Repo.get!(Recipe, id)
-      Repo.update!(%{resipe | view_count: resipe.view_count + 1})
-    end)
+    {:ok, recipe} = Repo.transaction(fn ->
+                      resipe = Repo.get!(Recipe, id)
+                      changeset = change(resipe, view_count: resipe.view_count + 1)
+                      Repo.update!(changeset)
+                    end)
+    recipe
   end
 end

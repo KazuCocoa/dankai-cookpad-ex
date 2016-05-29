@@ -31,7 +31,7 @@ defmodule Dankai.RecipeController do
   end
 
   def show(conn, %{"id" => id}) do
-    recipe = Repo.get!(Recipe, id)
+    recipe = Recipe.viewed!(id)
     render(conn, "show.html", recipe: recipe)
   end
 
