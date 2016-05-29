@@ -24,4 +24,12 @@ defmodule Dankai.RecipeImage do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  def path(id), do: "/uploads/recipe_images/#{id}.jpg"
+
+  def upload_to(id), do: "public#{path(id)}"
+
+  def raw(id), do: File.read! Dankai.Endpoint.config(:root), upload_to(id)
+
+  # TODO recipe_image_form.rb の実装はまだ
 end
