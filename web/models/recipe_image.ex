@@ -2,7 +2,6 @@ defmodule Dankai.RecipeImage do
   use Dankai.Web, :model
 
   schema "recipe_images" do
-#    field :recipe_id, :integer
     field :path, :string
     field :digest, :string
 
