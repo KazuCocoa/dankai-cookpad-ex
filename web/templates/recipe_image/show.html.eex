@@ -1,0 +1,23 @@
+<h2>Show recipe image</h2>
+
+<ul>
+
+  <li>
+    <strong>Recipe:</strong>
+    <%= @recipe_image.recipe_id %>
+  </li>
+
+  <li>
+    <strong>Path:</strong>
+    <%= @recipe_image.path %>
+  </li>
+
+  <li>
+    <strong>Digest:</strong>
+    <%= @recipe_image.digest %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: recipe_image_path(@conn, :edit, @recipe_image) %>
+<%= link "Back", to: recipe_image_path(@conn, :index) %>

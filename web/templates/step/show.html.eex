@@ -1,0 +1,18 @@
+<h2>Show step</h2>
+
+<ul>
+
+  <li>
+    <strong>Recipe:</strong>
+    <%= @step.recipe_id %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @step.description %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: step_path(@conn, :edit, @step) %>
+<%= link "Back", to: step_path(@conn, :index) %>

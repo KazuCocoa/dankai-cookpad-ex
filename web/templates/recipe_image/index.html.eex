@@ -1,0 +1,30 @@
+<h2>Listing recipe images</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Recipe</th>
+      <th>Path</th>
+      <th>Digest</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for recipe_image <- @recipe_images do %>
+    <tr>
+      <td><%= recipe_image.recipe_id %></td>
+      <td><%= recipe_image.path %></td>
+      <td><%= recipe_image.digest %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: recipe_image_path(@conn, :show, recipe_image), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: recipe_image_path(@conn, :edit, recipe_image), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: recipe_image_path(@conn, :delete, recipe_image), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New recipe image", to: recipe_image_path(@conn, :new) %>
