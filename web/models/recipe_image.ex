@@ -1,6 +1,9 @@
 defmodule Dankai.RecipeImage do
   use Dankai.Web, :model
 
+  alias Dankai.RecipeImage
+  alias Dankai.Recipe
+
   schema "recipe_images" do
     field :path, :string
     field :digest, :string
@@ -31,4 +34,21 @@ defmodule Dankai.RecipeImage do
   def raw(id), do: File.read! Dankai.Endpoint.config(:root), upload_to(id)
 
   # TODO recipe_image_form.rb の実装はまだ
+  def save(recipe_id) do
+    # Dir.mktmpdir do |tmpdir|
+    #  sdt_path = Path.join tmpdir, "recized.jpeg"
+    #  target_path = self.data.path # まだ、これはRuby
+    #  System.cmd "convert", ["-resize", "300x", target_path, sdt_path]
+      digest = :crypto.hash :sha256, File.read!()
+
+    #  changeset = RecipeImage.changeset(step, %{recipe_id: recipe_id, digest: digest})
+    #  id = Repo.insert!(changeset)
+    # end
+
+    # id
+  end
+
+  def recipe(recipe_id) do
+    Repo.get!(Recipe, recipe_id)
+  end
 end
