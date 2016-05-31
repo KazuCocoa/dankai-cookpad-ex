@@ -8,8 +8,19 @@ defmodule Dankai.RecipeController do
   plug :record_pv, "index" when action in [:index]
 
   def index(conn, _params) do
-    recipes = Repo.all(Recipe) |> Repo.preload(:steps)
-    render(conn, "index.html", recipes: recipes)
+    recipes = Recipe
+              |> Ecto.Query.preload(:steps)
+              |> Repo.paginate
+
+    render(
+      conn, "index.html",
+      page: recipes,
+      recipes: recipes.entries,
+      page_number: recipes.page_number,
+      page_size: recipes.page_size,
+      total_pages: recipes.total_pages,
+      total_entries: recipes.total_entries
+    )
   end
 
   def new(conn, _params) do

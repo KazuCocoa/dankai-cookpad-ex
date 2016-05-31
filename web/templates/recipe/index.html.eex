@@ -32,6 +32,8 @@
   </tbody>
 </table>
 
+<%= pagination_links @conn, @page %>
+
 <%= link "New recipe", to: recipe_path(@conn, :new) %>
 
 <p>あなたは<%= Enum.count(Dankai.Repo.all(Dankai.Pv)) %>人目の訪問者です</p>
